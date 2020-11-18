@@ -1,0 +1,7 @@
+<resources>
+  <string name="app_name">libuy</string>
+  <string name="navigation_drawer_open">Cajón de navegación abierto</string>
+  <string name="navigation_drawer_close">Cajón de navegación cerrado</string>
+  <string name="action_settings">Configuraciones</string>
+  <string name="mensaje">Hola mundo!!!</string>
+</resources>
