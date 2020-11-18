@@ -46,6 +46,9 @@ namespace libuy
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)//INFLA NUESTRO LAYOUT(ARCHIVO XAML) QUER REPRESENTA NUESTROS ELEMENTOS,
                                                                                                   //Y DEVUELVE UNA INSTRANCIA DE LA CLASE VIEWHOLDER QUE ANTES DEFINIMOS
         {
+            //CREAR UNA NUEVAS VISTAS
+            //TextView newTextView = (TextView)LayoutInflater.From(parent.Context).Inflate(Resource.Layout.item, parent, false);
+            //return new MyViewHolder(newTextView);
 
             //LAYOUT, DISPOSICION
             LayoutInflater inflater = LayoutInflater.From(parent.Context);

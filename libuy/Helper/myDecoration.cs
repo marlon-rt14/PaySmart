@@ -45,10 +45,10 @@ namespace libuy
         }
 
 
-        public override void GetItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state)
-        {
-            base.GetItemOffsets(outRect, view, parent, state);
-            outRect.Set(0, 0, 0, 3);
-        }
+        //public override void GetItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state)
+        //{
+        //    base.GetItemOffsets(outRect, view, parent, state);
+        //    outRect.Set(0, 0, 0, 3);
+        //}
     }
 }
