@@ -86,10 +86,10 @@ namespace libuy
         {
             InitData();
             recycler = FindViewById<RecyclerView>(Resource.Id.recycler_view_main);//OBTENEMOS NUESTRO RECYCLERVIEW DECLARADO EN UN XAML
-            recycler.AddItemDecoration(new myDecoration(recycler.Context));
             recycler.HasFixedSize = true;//ESTA LINEA MEJORA EL RENDIMIENTO, SI SABEMOS QUE EL CONTENIDO NO VA A AFECTAR EL TAMAÑO DEL RECYCLERVIEW
             layoutManager = new LinearLayoutManager(this);//NUESTRO RECYCLERVIEW USARA UN LINEAR LAYOUT MANAGER
             recycler.SetLayoutManager(layoutManager);//NUESTRO RECYCLERVIEW SE VA A PINTAR EN FUNCIÓN AL LAYOUTMANAGER QUE RECIBA COMO PARAMETRO
+            //recycler.AddItemDecoration(new myDecoration(recycler.Context));
             adapter = new MyAdapter(lstData);//ASOCIAMOS UN ADAPTER
             recycler.SetAdapter(adapter);
         }
