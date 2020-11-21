@@ -22,6 +22,7 @@ namespace libuy
         {
             txt_titulo = itemView.FindViewById<TextView>(Resource.Id.txtTitulo);
             txt_descripcion = itemView.FindViewById<TextView>(Resource.Id.txtDescripcion);
+            
         }
     }
 
@@ -29,31 +30,40 @@ namespace libuy
     {
         private List<Data> lstData;
 
-        public MyAdapter(List<Data> lstData)
+        public MyAdapter(List<Data> lstData) //añadir, editar o eliminar elementos
         {
             this.lstData = lstData;
         }
+
 
         public override int ItemCount => lstData.Count; //DEVUELVE UN ENTERO INDICANDO LA CANTIDAD DE ELEMENTOS A MOSTRAR EN EL RECYCLERVIEW
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)//ENLAZA NUESTROS DATOS CON EL VIEWHOLDER(LA VISTA TITULAR)
         {
+            //Data newItemData = lstData.FindIndex(position);
             MyViewHolder newDataView = holder as MyViewHolder;
             newDataView.txt_titulo.Text = lstData[position].data_title;
             newDataView.txt_descripcion.Text = lstData[position].data_description;
+            
         }
 
+        
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)//INFLA NUESTRO LAYOUT(ARCHIVO XAML) QUER REPRESENTA NUESTROS ELEMENTOS,
                                                                                                   //Y DEVUELVE UNA INSTRANCIA DE LA CLASE VIEWHOLDER QUE ANTES DEFINIMOS
         {
+
             //CREAR UNA NUEVAS VISTAS
             //TextView newTextView = (TextView)LayoutInflater.From(parent.Context).Inflate(Resource.Layout.item, parent, false);
+            View itemView = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.item, parent, false);
             //return new MyViewHolder(newTextView);
 
+
+           //MyViewHolder vista = new MyViewHolder(itemView);
+            
             //LAYOUT, DISPOSICION
-            LayoutInflater inflater = LayoutInflater.From(parent.Context);
+            // LayoutInflater inflater = LayoutInflater.From(parent.Context);
             //VIEW, VISTA
-            View itemView = inflater.Inflate(Resource.Layout.item, parent, false);
+            // View itemView = inflater.Inflate(Resource.Layout.item, parent, false);
             //REGRESAR LA NUEVA VISTA
             return new MyViewHolder(itemView);
         }

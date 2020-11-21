@@ -6,10 +6,9 @@
     android:layout_height="100dp"
     app:cardBackgroundColor="#FF959839"
     app:cardElevation="10dp"
-    app:cardCornerRadius="10dp"
-    app:cardUseCompatPadding="true">
-
-    <LinearLayout
+    app:cardCornerRadius="10dp">
+    
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
