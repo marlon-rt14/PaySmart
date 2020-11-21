@@ -48,7 +48,7 @@ namespace libuy
         public override void GetItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state)
         {
             base.GetItemOffsets(outRect, view, parent, state);
-            outRect.Set(0, 0, 0, 5);
+            outRect.Set(0, 25,0,25);
         }
     }
 }

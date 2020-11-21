@@ -20,10 +20,9 @@ namespace libuy
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true, ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.KeyboardHidden)]
     public class MainActivity : AppCompatActivity, NavigationView.IOnNavigationItemSelectedListener
     {
-        private RecyclerView recycler; //OBTENEMOS UNA REFERENCIA DEL RECYCLERVIEW
-        private RecyclerView.Adapter adapter;
+        private RecyclerView mRecyclerView; //OBTENEMOS UNA REFERENCIA DEL RECYCLERVIEW
+        private RecyclerView.Adapter mAdapter;
         private RecyclerView.LayoutManager layoutManager;
-        
         private List<Data> lstData = new List<Data>();
 
         private DrawerLayout drawer;
@@ -61,9 +60,6 @@ namespace libuy
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             navigationView.SetNavigationItemSelectedListener(this);
 
-            //PRUEBA
-
-
             //Crear una nueva instancia de nuestro Scanner
             MobileBarcodeScanner.Initialize(Application);
             fabScanDefaultView = FindViewById<FloatingActionButton>(Resource.Id.fabAdd);
@@ -84,16 +80,31 @@ namespace libuy
 
             };
 
+            //PRUEBA
+            IinitRecylcerView();
+
         }
+
+        private void IinitRecylcerView()
+        {
+            mRecyclerView = FindViewById<RecyclerView>(Resource.Id.recycler_view_main);//OBTENEMOS NUESTRO RECYCLERVIEW DECLARADO EN UN XAML
+            mRecyclerView.AddItemDecoration(new myDecoration(this));
+            mRecyclerView.HasFixedSize = true;//ESTA LINEA MEJORA EL RENDIMIENTO, SI SABEMOS QUE EL CONTENIDO NO VA A AFECTAR EL TAMAÑO DEL RECYCLERVIEW 
+        }
+
 
         private void BtnAdd_Click(object sender, System.EventArgs e)
         {
-//            InitData();
-            InitRecyclerView();
-            //recycler.AddItemDecoration(new myDecoration(recycler.Context));
-            
-            //adapter.NotifyItemInserted(1);
+            InitData();
+            layoutManager = new LinearLayoutManager(this);//NUESTRO RECYCLERVIEW USARA UN LINEAR LAYOUT MANAGER
+            mRecyclerView.SetLayoutManager(layoutManager);//NUESTRO RECYCLERVIEW SE VA A PINTAR EN FUNCIÓN AL LAYOUTMANAGER QUE RECIBA COMO PARAMETRO
+                                                          // recycler.AddItemDecoration(new myDecoration(recycler.Context));
+
+            mAdapter = new MyAdapter(lstData);//ASOCIAMOS UN ADAPTER
+            mRecyclerView.SetAdapter(mAdapter);
+
         }
+
 
         void HandleScanResult(ZXing.Result result)
         {
@@ -106,23 +117,10 @@ namespace libuy
             RunOnUiThread(() => Toast.MakeText(this, msg, ToastLength.Short).Show());
         }
 
-        private void InitRecyclerView()
-        {
-            recycler = FindViewById<RecyclerView>(Resource.Id.recycler_view_main);//OBTENEMOS NUESTRO RECYCLERVIEW DECLARADO EN UN XAML
-            recycler.HasFixedSize = true;//ESTA LINEA MEJORA EL RENDIMIENTO, SI SABEMOS QUE EL CONTENIDO NO VA A AFECTAR EL TAMAÑO DEL RECYCLERVIEW
-            layoutManager = new LinearLayoutManager(this);//NUESTRO RECYCLERVIEW USARA UN LINEAR LAYOUT MANAGER
-            recycler.SetLayoutManager(layoutManager);//NUESTRO RECYCLERVIEW SE VA A PINTAR EN FUNCIÓN AL LAYOUTMANAGER QUE RECIBA COMO PARAMETRO
-            adapter = new MyAdapter(lstData);//ASOCIAMOS UN ADAPTER
-            InitData();
-            recycler.SetAdapter(adapter);
-
-        }
-
         private void InitData()
         {
+
             lstData.Add(new Data() { data_title = "NUEVO TITULO", data_description = "DESCRIPCION..." });
-            recycler.AddItemDecoration(new myDecoration(this));
-            adapter.NotifyDataSetChanged();
         }
 
         //Ir hacia atras
