@@ -22,11 +22,11 @@ namespace libuy
         {
             txt_titulo = itemView.FindViewById<TextView>(Resource.Id.txtTitulo);
             txt_descripcion = itemView.FindViewById<TextView>(Resource.Id.txtDescripcion);
-            
+
         }
     }
 
-    class MyAdapter : RecyclerView.Adapter
+    public class MyAdapter : RecyclerView.Adapter
     {
         private List<Data> lstData;
 
@@ -44,10 +44,10 @@ namespace libuy
             MyViewHolder newDataView = holder as MyViewHolder;
             newDataView.txt_titulo.Text = lstData[position].data_title;
             newDataView.txt_descripcion.Text = lstData[position].data_description;
-            
+
         }
 
-        
+
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)//INFLA NUESTRO LAYOUT(ARCHIVO XAML) QUER REPRESENTA NUESTROS ELEMENTOS,
                                                                                                   //Y DEVUELVE UNA INSTRANCIA DE LA CLASE VIEWHOLDER QUE ANTES DEFINIMOS
         {
@@ -58,8 +58,8 @@ namespace libuy
             //return new MyViewHolder(newTextView);
 
 
-           //MyViewHolder vista = new MyViewHolder(itemView);
-            
+            //MyViewHolder vista = new MyViewHolder(itemView);
+
             //LAYOUT, DISPOSICION
             // LayoutInflater inflater = LayoutInflater.From(parent.Context);
             //VIEW, VISTA

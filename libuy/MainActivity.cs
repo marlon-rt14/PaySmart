@@ -104,11 +104,11 @@ namespace libuy
             mRecyclerView.SetAdapter(mAdapter);
 
         }
-        
+
         private void InitData()
         {
 
-            lstData.Add(new Data() { data_title = "NUEVO TITULO", data_description = "DESCRIPCION..." });
+            lstData.Add(new Data() { data_title = "NUEVO TITULO ", data_description = "DESCRIPCION... " });
         }
 
 
@@ -123,7 +123,7 @@ namespace libuy
             RunOnUiThread(() => Toast.MakeText(this, msg, ToastLength.Short).Show());
         }
 
-       
+
         //Ir hacia atras
         public override void OnBackPressed()
         {

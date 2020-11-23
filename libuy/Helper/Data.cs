@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace libuy.Helper
 {
-    class Data
+    public class Data
     {
 	    //PROPIEDADES
         public string data_title { get; set; }
