@@ -104,11 +104,12 @@ namespace libuy
             mRecyclerView.SetAdapter(mAdapter);
 
         }
-
+        int cont = 0;
         private void InitData()
         {
 
-            lstData.Add(new Data() { data_title = "NUEVO TITULO ", data_description = "DESCRIPCION... " });
+            lstData.Add(new Data() { data_title = cont.ToString() + ".- NUEVO TITULO ", data_description = cont.ToString() + ".- DESCRIPCION... " });
+            cont++;
         }
 
 
