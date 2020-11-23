@@ -31,7 +31,7 @@ namespace libuy
             int right = parent.Width - parent.PaddingRight;
 
             int childCount = parent.ChildCount;
-            for (int i = 0; i < childCount -1; i++)
+            for (int i = 0; i < childCount - 1; i++)
             {
                 View child = parent.GetChildAt(i);
                 RecyclerView.LayoutParams @params = (RecyclerView.LayoutParams)child.LayoutParameters;
@@ -39,7 +39,7 @@ namespace libuy
                 int top = child.Bottom + @params.BottomMargin;
                 int bottom = top + mDivider.IntrinsicHeight;
 
-                mDivider.SetBounds(left, top, right, bottom);
+                mDivider.SetBounds(left, top, right , bottom);
                 mDivider.Draw(c);
             }
         }
@@ -48,7 +48,13 @@ namespace libuy
         public override void GetItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state)
         {
             base.GetItemOffsets(outRect, view, parent, state);
-            outRect.Set(0, 25,0,25);
+            //outRect.Set(25, 0, 25, 9);
+            //if (parent.GetChildAdapterPosition(view) == 0)
+            //{
+            //    return;
+            //}
+            //outRect.Bottom = mDivider.IntrinsicHeight;
+            outRect.Set(25, 0, 25, mDivider.IntrinsicHeight);
         }
     }
 }

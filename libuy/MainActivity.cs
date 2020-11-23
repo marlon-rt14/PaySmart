@@ -80,7 +80,7 @@ namespace libuy
 
             };
 
-            //PRUEBA
+            //Iniciar la decoracion
             IinitRecylcerView();
 
         }
@@ -104,6 +104,12 @@ namespace libuy
             mRecyclerView.SetAdapter(mAdapter);
 
         }
+        
+        private void InitData()
+        {
+
+            lstData.Add(new Data() { data_title = "NUEVO TITULO", data_description = "DESCRIPCION..." });
+        }
 
 
         void HandleScanResult(ZXing.Result result)
@@ -117,12 +123,7 @@ namespace libuy
             RunOnUiThread(() => Toast.MakeText(this, msg, ToastLength.Short).Show());
         }
 
-        private void InitData()
-        {
-
-            lstData.Add(new Data() { data_title = "NUEVO TITULO", data_description = "DESCRIPCION..." });
-        }
-
+       
         //Ir hacia atras
         public override void OnBackPressed()
         {
