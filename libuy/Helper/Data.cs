@@ -17,5 +17,6 @@ namespace libuy.Helper
 	    //PROPIEDADES
         public string data_title { get; set; }
         public string data_description { get; set; }
+        public int data_numeration { get; set; }
     }
 }

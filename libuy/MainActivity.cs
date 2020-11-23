@@ -108,7 +108,7 @@ namespace libuy
         private void InitData()
         {
 
-            lstData.Add(new Data() { data_title = cont.ToString() + ".- NUEVO TITULO ", data_description = cont.ToString() + ".- DESCRIPCION... " });
+            lstData.Add(new Data() { data_numeration = cont, data_title = "NUEVO PRODUCTO", data_description = cont.ToString() + "Descripcion del producto" });
             cont++;
         }
 

@@ -17,12 +17,13 @@ namespace libuy
     {
         public TextView txt_titulo;
         public TextView txt_descripcion;
+        public TextView txt_numeration;
 
         public MyViewHolder(View itemView) : base(itemView)
         {
             txt_titulo = itemView.FindViewById<TextView>(Resource.Id.txtTitulo);
             txt_descripcion = itemView.FindViewById<TextView>(Resource.Id.txtDescripcion);
-
+            txt_numeration = itemView.FindViewById<TextView>(Resource.Id.txtNumeracion);
         }
     }
 
@@ -44,7 +45,7 @@ namespace libuy
             MyViewHolder newDataView = holder as MyViewHolder;
             newDataView.txt_titulo.Text = lstData[position].data_title;
             newDataView.txt_descripcion.Text = lstData[position].data_description;
-
+            newDataView.txt_numeration.Text = lstData[position].data_numeration.ToString();
         }
 
 
