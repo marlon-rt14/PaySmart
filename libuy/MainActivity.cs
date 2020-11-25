@@ -14,6 +14,7 @@ using ZXing.Mobile;
 using Android.Widget;
 using Android.Content.PM;
 using Android.Graphics.Drawables;
+using Android.Support.V7.Widget.Helper;
 
 namespace libuy
 {
@@ -30,8 +31,10 @@ namespace libuy
         private NavigationView navigationView;
         private Button btnAdd;
 
+        private ItemTouchHelper callToDelete;
+
         private FloatingActionButton fabScanDefaultView;
-        MobileBarcodeScanner scanner;
+        private MobileBarcodeScanner scanner;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -102,13 +105,15 @@ namespace libuy
 
             mAdapter = new MyAdapter(lstData);//ASOCIAMOS UN ADAPTER
             mRecyclerView.SetAdapter(mAdapter);
+            callToDelete = new ItemTouchHelper(new SwipeToDelete(this, mAdapter));
+            callToDelete.AttachToRecyclerView(mRecyclerView);
 
         }
         int cont = 0;
         private void InitData()
         {
 
-            lstData.Add(new Data() { data_numeration = cont, data_title = "NUEVO PRODUCTO", data_description = cont.ToString() + "Descripcion del producto" });
+            lstData.Add(new Data() { data_numeration = cont, data_title = "NUEVO PRODUCTO", data_description = "Descripcion del producto" });
             cont++;
         }
 

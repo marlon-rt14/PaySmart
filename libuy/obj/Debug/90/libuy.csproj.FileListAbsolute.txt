@@ -1053,3 +1053,4 @@ C:\Users\mjavi\source\repos\PaySmart-master\libuy\obj\Debug\90\stamp\_ResolveLib
 C:\Users\mjavi\source\repos\PaySmart-master\libuy\obj\Debug\90\android\src\crc644dcc197f5925f294\myDecoration.java
 C:\Users\mjavi\source\repos\PaySmart-master\libuy\obj\Debug\90\res\drawable\divider.xml
 C:\Users\mjavi\source\repos\PaySmart-master\libuy\obj\Debug\90\android\src\crc643bf7006959fc0ee1\SwipeToDelete.java
+C:\Users\mjavi\source\repos\PaySmart-master\libuy\obj\Debug\90\res\drawable\ic_delete.xml

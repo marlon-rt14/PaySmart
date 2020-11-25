@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helper\Data.cs" />
+    <Compile Include="Helper\SwipeToDelete.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Helper\MyAdapter.cs" />
     <Compile Include="Helper\myDecoration.cs" />
@@ -148,6 +149,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\divider.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_delete.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

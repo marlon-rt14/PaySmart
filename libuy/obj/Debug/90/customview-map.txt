@@ -55,6 +55,7 @@ LinearLayout;obj\Debug\90\res\layout\item.xml
 LinearLayout;obj\Debug\90\res\layout\nav_header_main.xml
 menu;obj\Debug\90\res\menu\activity_main_drawer.xml
 menu;obj\Debug\90\res\menu\menu_main.xml
+path;obj\Debug\90\res\drawable\ic_delete.xml
 paths;C:\Users\mjavi\source\repos\PaySmart-master\libuy\obj\Debug\90\lp\39\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 resources;C:\Users\mjavi\source\repos\PaySmart-master\libuy\obj\Debug\90\lp\40\jl\res\values\attrs.xml
 resources;C:\Users\mjavi\source\repos\PaySmart-master\libuy\obj\Debug\90\lp\40\jl\res\values\strings.xml
@@ -83,4 +84,5 @@ translate;C:\Users\mjavi\source\repos\PaySmart-master\libuy\obj\Debug\90\lp\40\j
 translate;C:\Users\mjavi\source\repos\PaySmart-master\libuy\obj\Debug\90\lp\40\jl\res\anim\enterfromright.xml
 translate;C:\Users\mjavi\source\repos\PaySmart-master\libuy\obj\Debug\90\lp\40\jl\res\anim\exittoleft.xml
 translate;C:\Users\mjavi\source\repos\PaySmart-master\libuy\obj\Debug\90\lp\40\jl\res\anim\exittoright.xml
+vector;obj\Debug\90\res\drawable\ic_delete.xml
 xamarin.forms.platform.android.appcompat.FormsViewPager;C:\Users\mjavi\source\repos\PaySmart-master\libuy\obj\Debug\90\lp\40\jl\res\layout\rootlayout.xml

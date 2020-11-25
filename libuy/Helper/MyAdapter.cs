@@ -3,6 +3,7 @@ using Android.Content.Res;
 using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.Runtime;
+using Android.Support.Design.Widget;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
@@ -30,6 +31,8 @@ namespace libuy
     public class MyAdapter : RecyclerView.Adapter
     {
         private List<Data> lstData;
+        private Data mRecentlyDeletedItem;
+        private int mRecentlyDeletedItemPosition;
 
         public MyAdapter(List<Data> lstData) //añadir, editar o eliminar elementos
         {
@@ -47,7 +50,6 @@ namespace libuy
             newDataView.txt_descripcion.Text = lstData[position].data_description;
             newDataView.txt_numeration.Text = lstData[position].data_numeration.ToString();
         }
-
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)//INFLA NUESTRO LAYOUT(ARCHIVO XAML) QUER REPRESENTA NUESTROS ELEMENTOS,
                                                                                                   //Y DEVUELVE UNA INSTRANCIA DE LA CLASE VIEWHOLDER QUE ANTES DEFINIMOS
@@ -68,5 +70,46 @@ namespace libuy
             //REGRESAR LA NUEVA VISTA
             return new MyViewHolder(itemView);
         }
+
+        //public void deleteItem(int position)
+        //{
+        //    mRecentlyDeletedItem = lstData[position];
+        //    mRecentlyDeletedItemPosition = position;
+        //    lstData.RemoveAt(position);
+        //    NotifyItemRemoved(position);
+        //    showUndoSnackBar();
+        //}
+
+        //public void showUndoSnackBar()
+        //{
+        //    LayoutInflater inflater = (LayoutInflater)this.contexto.GetSystemService(Context.LayoutInflaterService);
+        //    View vista = inflater.Inflate(Resource.Layout.content_main, null);
+        //    Snackbar sbMessage = Snackbar.Make(vista, "Eliminado", Snackbar.LengthLong);
+        //    sbMessage.SetAction("Deshacer", change => undoDelete());
+        //}
+
+        //private void undoDelete()
+        //{
+        //    lstData.Add(mRecentlyDeletedItem);
+        //    NotifyItemInserted(mRecentlyDeletedItemPosition);
+        //}
+
+        public Data getData(int position)
+        {
+            return lstData[position];
+        }
+
+        public void removeItem(int position)
+        {
+            lstData.RemoveAt(position);
+            NotifyItemRemoved(position);
+        }
+
+        public void restoreItem(Data item, int position)
+        {
+            lstData.Add(item);
+            NotifyItemInserted(position);
+        }
+
     }
 }
