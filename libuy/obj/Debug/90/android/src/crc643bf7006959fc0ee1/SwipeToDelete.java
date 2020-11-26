@@ -27,11 +27,11 @@ public class SwipeToDelete
 			mono.android.TypeManager.Activate ("libuy.Helper.SwipeToDelete, libuy", "", this, new java.lang.Object[] {  });
 	}
 
-	public SwipeToDelete (android.content.Context p0, android.support.v7.widget.RecyclerView.Adapter p1)
+	public SwipeToDelete (android.content.Context p0, android.support.v7.widget.RecyclerView.Adapter p1, android.support.v7.widget.RecyclerView p2)
 	{
 		super ();
 		if (getClass () == SwipeToDelete.class)
-			mono.android.TypeManager.Activate ("libuy.Helper.SwipeToDelete, libuy", "Android.Content.Context, Mono.Android:Android.Support.V7.Widget.RecyclerView+Adapter, Xamarin.Android.Support.v7.RecyclerView", this, new java.lang.Object[] { p0, p1 });
+			mono.android.TypeManager.Activate ("libuy.Helper.SwipeToDelete, libuy", "Android.Content.Context, Mono.Android:Android.Support.V7.Widget.RecyclerView+Adapter, Xamarin.Android.Support.v7.RecyclerView:Android.Support.V7.Widget.RecyclerView, Xamarin.Android.Support.v7.RecyclerView", this, new java.lang.Object[] { p0, p1, p2 });
 	}
 
 

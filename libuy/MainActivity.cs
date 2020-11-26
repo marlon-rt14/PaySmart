@@ -85,7 +85,6 @@ namespace libuy
 
             //Iniciar la decoracion
             IinitRecylcerView();
-
         }
 
         private void IinitRecylcerView()
@@ -93,30 +92,30 @@ namespace libuy
             mRecyclerView = FindViewById<RecyclerView>(Resource.Id.recycler_view_main);//OBTENEMOS NUESTRO RECYCLERVIEW DECLARADO EN UN XAML
             mRecyclerView.AddItemDecoration(new myDecoration(this));
             mRecyclerView.HasFixedSize = true;//ESTA LINEA MEJORA EL RENDIMIENTO, SI SABEMOS QUE EL CONTENIDO NO VA A AFECTAR EL TAMAÑO DEL RECYCLERVIEW 
-        }
-
-
-        private void BtnAdd_Click(object sender, System.EventArgs e)
-        {
-            InitData();
             layoutManager = new LinearLayoutManager(this);//NUESTRO RECYCLERVIEW USARA UN LINEAR LAYOUT MANAGER
             mRecyclerView.SetLayoutManager(layoutManager);//NUESTRO RECYCLERVIEW SE VA A PINTAR EN FUNCIÓN AL LAYOUTMANAGER QUE RECIBA COMO PARAMETRO
                                                           // recycler.AddItemDecoration(new myDecoration(recycler.Context));
 
-            mAdapter = new MyAdapter(lstData);//ASOCIAMOS UN ADAPTER
-            mRecyclerView.SetAdapter(mAdapter);
-            callToDelete = new ItemTouchHelper(new SwipeToDelete(this, mAdapter));
-            callToDelete.AttachToRecyclerView(mRecyclerView);
-
         }
-        int cont = 0;
-        private void InitData()
-        {
 
+        int cont = 0;
+        private void BtnAdd_Click(object sender, System.EventArgs e)
+        {
             lstData.Add(new Data() { data_numeration = cont, data_title = "NUEVO PRODUCTO", data_description = "Descripcion del producto" });
             cont++;
-        }
 
+            //layoutManager = new LinearLayoutManager(this);//NUESTRO RECYCLERVIEW USARA UN LINEAR LAYOUT MANAGER
+            //mRecyclerView.SetLayoutManager(layoutManager);//NUESTRO RECYCLERVIEW SE VA A PINTAR EN FUNCIÓN AL LAYOUTMANAGER QUE RECIBA COMO PARAMETRO
+            //                                              // recycler.AddItemDecoration(new myDecoration(recycler.Context));
+
+            mAdapter = new MyAdapter(lstData, this);//ASOCIAMOS UN ADAPTER
+            mRecyclerView.SetAdapter(mAdapter);
+            //callToDelete = new ItemTouchHelper(new SwipeToDelete(this, mAdapter, mRecyclerView));
+            callToDelete = new ItemTouchHelper(new SwipeToDelete_v2(mAdapter, this));
+            callToDelete.AttachToRecyclerView(mRecyclerView);
+
+
+        }
 
         void HandleScanResult(ZXing.Result result)
         {

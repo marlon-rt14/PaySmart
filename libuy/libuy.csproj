@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="Helper\Data.cs" />
     <Compile Include="Helper\SwipeToDelete.cs" />
+    <Compile Include="Helper\SwipeToDelete_v2.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Helper\MyAdapter.cs" />
     <Compile Include="Helper\myDecoration.cs" />

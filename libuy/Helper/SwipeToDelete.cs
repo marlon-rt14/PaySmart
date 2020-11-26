@@ -22,19 +22,19 @@ namespace libuy.Helper
 
         MyAdapter myAdapter;
         Context mContext;
+        RecyclerView newRecylcer;
         private Paint mClearPaint;
         private ColorDrawable mBackground;
-        private int backgroundColor;
         private Drawable deleteDrawable;
         private int intrinsicWidth;
         private int intrinsicHeight;
 
-        public SwipeToDelete(Context context, RecyclerView.Adapter adapter)
+        public SwipeToDelete(Context context, RecyclerView.Adapter adapter, RecyclerView mRecycler)
         {
             myAdapter = (MyAdapter)adapter;
             mContext = context;
+            newRecylcer = mRecycler;
             mBackground = new ColorDrawable();
-            backgroundColor = Color.ParseColor("#b80f0a");
             mClearPaint = new Paint();
             mClearPaint.SetXfermode(new PorterDuffXfermode(PorterDuff.Mode.Clear));
             deleteDrawable = context.GetDrawable(Resource.Drawable.ic_delete);
@@ -57,21 +57,26 @@ namespace libuy.Helper
 
         public override void OnSwiped(RecyclerView.ViewHolder viewHolder, int direction)
         {
-            int position = viewHolder.AdapterPosition;
-            Data item = myAdapter.getData(position);
+            //int position = viewHolder.AdapterPosition;
+            //Data item = myAdapter.getData(position);
 
-            myAdapter.removeItem(position);
+            //myAdapter.removeItem(position);
 
-            View container = ((MainActivity)mContext).Window.DecorView.FindViewById(Resource.Id.container);
-            Snackbar snackbar = Snackbar.Make(container, "El producto ha sido removido de la lista", Snackbar.LengthLong);
-            snackbar.SetAction("DESHACER", v => undoDelete(position, item));
-            snackbar.SetActionTextColor(Color.LightGreen);
-            snackbar.Show();
+            //View container = ((MainActivity)mContext).Window.DecorView.FindViewById(Resource.Id.container);
+            //Snackbar snackbar = Snackbar.Make(container, "El producto ha sido removido de la lista", Snackbar.LengthLong);
+            //snackbar.SetAction("UNDO", (View view) =>
+            //{
+            //    myAdapter.restoreItem(item, position);
+            //    newRecylcer.ScrollToPosition(position);
+            //});
+            //snackbar.SetActionTextColor(Color.LightGreen);
+            //snackbar.Show();
         }
 
         public override void OnChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, bool isCurrentlyActive)
         {
             base.OnChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+
             View itemView = viewHolder.ItemView;
             int itemHeight = itemView.Height;
 
@@ -81,9 +86,10 @@ namespace libuy.Helper
             {
                 clearCanvas(c, itemView.Right + dX, (float)itemView.Top, (float)itemView.Right, (float)itemView.Bottom);
                 base.OnChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+                return;
             }
 
-            mBackground.SetColorFilter(Color.Red, PorterDuff.Mode.Add );
+            mBackground.SetColorFilter(Color.Red, PorterDuff.Mode.Add);
             mBackground.SetBounds(itemView.Right + (int)dX, itemView.Top, itemView.Right, itemView.Bottom);
             mBackground.Draw(c);
 
@@ -109,11 +115,5 @@ namespace libuy.Helper
             return 0.7f;
         }
 
-        public void undoDelete(int position, Data item)
-        {
-            myAdapter.restoreItem(item, position);
-            RecyclerView recycler = ((MainActivity)mContext).Window.DecorView.FindViewById<RecyclerView>(Resource.Id.recycler_view_main);
-            recycler.ScrollToPosition(position);
-        }
     }
 }

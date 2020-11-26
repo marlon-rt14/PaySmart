@@ -31,12 +31,14 @@ namespace libuy
     public class MyAdapter : RecyclerView.Adapter
     {
         private List<Data> lstData;
+        private Context mContexto;
         private Data mRecentlyDeletedItem;
         private int mRecentlyDeletedItemPosition;
 
-        public MyAdapter(List<Data> lstData) //añadir, editar o eliminar elementos
+        public MyAdapter(List<Data> lstData, Context contexto) //añadir, editar o eliminar elementos
         {
             this.lstData = lstData;
+            mContexto = contexto;
         }
 
 
@@ -71,45 +73,46 @@ namespace libuy
             return new MyViewHolder(itemView);
         }
 
-        //public void deleteItem(int position)
-        //{
-        //    mRecentlyDeletedItem = lstData[position];
-        //    mRecentlyDeletedItemPosition = position;
-        //    lstData.RemoveAt(position);
-        //    NotifyItemRemoved(position);
-        //    showUndoSnackBar();
-        //}
-
-        //public void showUndoSnackBar()
-        //{
-        //    LayoutInflater inflater = (LayoutInflater)this.contexto.GetSystemService(Context.LayoutInflaterService);
-        //    View vista = inflater.Inflate(Resource.Layout.content_main, null);
-        //    Snackbar sbMessage = Snackbar.Make(vista, "Eliminado", Snackbar.LengthLong);
-        //    sbMessage.SetAction("Deshacer", change => undoDelete());
-        //}
-
-        //private void undoDelete()
-        //{
-        //    lstData.Add(mRecentlyDeletedItem);
-        //    NotifyItemInserted(mRecentlyDeletedItemPosition);
-        //}
-
-        public Data getData(int position)
+        //SEGUNDA VERSION
+        public void deleteItem(int position)
         {
-            return lstData[position];
-        }
-
-        public void removeItem(int position)
-        {
+            mRecentlyDeletedItem = lstData[position];
+            mRecentlyDeletedItemPosition = position;
             lstData.RemoveAt(position);
             NotifyItemRemoved(position);
+            //RecyclerView recycler = ((MainActivity)mContexto).Window.DecorView.FindViewById<RecyclerView>(Resource.Id.recycler_view_main);
+            //recycler.ScrollToPosition(position);
+            showUndoSnackBar();
         }
 
-        public void restoreItem(Data item, int position)
+        public void showUndoSnackBar()
         {
-            lstData.Add(item);
-            NotifyItemInserted(position);
+            View vista = ((MainActivity)mContexto).Window.DecorView.FindViewById(Resource.Id.container);
+            Snackbar sbMessage = Snackbar.Make(vista, "Eliminado", Snackbar.LengthLong);
+            sbMessage.SetAction("Deshacer", (View view) => {
+                lstData.Insert(mRecentlyDeletedItemPosition, mRecentlyDeletedItem);
+                NotifyItemInserted(mRecentlyDeletedItemPosition);
+            });
+            sbMessage.Show();
         }
+
+        //PRIMERA VERSION
+        //public Data getData(int position)
+        //{
+        //    return lstData[position];
+        //}
+
+        //public void removeItem(int position)
+        //{
+        //    lstData.RemoveAt(position);
+        //    NotifyItemRemoved(position);
+        //}
+
+        //public void restoreItem(Data item, int position)
+        //{
+        //    lstData.Add(item);
+        //    NotifyItemInserted(position);
+        //}
 
     }
 }
