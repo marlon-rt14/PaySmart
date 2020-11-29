@@ -13,6 +13,7 @@ public class SwipeToDelete_v2
 			"n_getMovementFlags:(Landroid/support/v7/widget/RecyclerView;Landroid/support/v7/widget/RecyclerView$ViewHolder;)I:GetGetMovementFlags_Landroid_support_v7_widget_RecyclerView_Landroid_support_v7_widget_RecyclerView_ViewHolder_Handler\n" +
 			"n_onMove:(Landroid/support/v7/widget/RecyclerView;Landroid/support/v7/widget/RecyclerView$ViewHolder;Landroid/support/v7/widget/RecyclerView$ViewHolder;)Z:GetOnMove_Landroid_support_v7_widget_RecyclerView_Landroid_support_v7_widget_RecyclerView_ViewHolder_Landroid_support_v7_widget_RecyclerView_ViewHolder_Handler\n" +
 			"n_onSwiped:(Landroid/support/v7/widget/RecyclerView$ViewHolder;I)V:GetOnSwiped_Landroid_support_v7_widget_RecyclerView_ViewHolder_IHandler\n" +
+			"n_onChildDraw:(Landroid/graphics/Canvas;Landroid/support/v7/widget/RecyclerView;Landroid/support/v7/widget/RecyclerView$ViewHolder;FFIZ)V:GetOnChildDraw_Landroid_graphics_Canvas_Landroid_support_v7_widget_RecyclerView_Landroid_support_v7_widget_RecyclerView_ViewHolder_FFIZHandler\n" +
 			"";
 		mono.android.Runtime.register ("libuy.Helper.SwipeToDelete_v2, libuy", SwipeToDelete_v2.class, __md_methods);
 	}
@@ -55,6 +56,14 @@ public class SwipeToDelete_v2
 	}
 
 	private native void n_onSwiped (android.support.v7.widget.RecyclerView.ViewHolder p0, int p1);
+
+
+	public void onChildDraw (android.graphics.Canvas p0, android.support.v7.widget.RecyclerView p1, android.support.v7.widget.RecyclerView.ViewHolder p2, float p3, float p4, int p5, boolean p6)
+	{
+		n_onChildDraw (p0, p1, p2, p3, p4, p5, p6);
+	}
+
+	private native void n_onChildDraw (android.graphics.Canvas p0, android.support.v7.widget.RecyclerView p1, android.support.v7.widget.RecyclerView.ViewHolder p2, float p3, float p4, int p5, boolean p6);
 
 	private java.util.ArrayList refList;
 	public void monodroidAddReference (java.lang.Object obj)
